@@ -38,4 +38,5 @@
     <string name="tps_label">TPS:</string>
     <string name="tvq_label">TVQ:</string>
     <string name="total_label">Total:</string>
+    <string name="title_activity_menu">MenuActivity</string>
 </resources>
