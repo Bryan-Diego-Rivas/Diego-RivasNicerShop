@@ -1,13 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    style="@style/gem_description">
 
     <TextView
         android:id="@+id/gem"
         style="@style/gem_tittle" />
 
-    
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/gem_description">
+
+        <ImageView
+            android:id="@+id/image"
+            style="@style/gem_images" />
+
+        <TextView
+            android:id="@+id/price"
+            style="@style/gem_price" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/add_button"
+                android:text="add"
+                android:onClick="addItemAll"
+                style="@style/gem_add_button" />
+
+            <Button
+                android:id="@+id/remove_button"
+                android:text="remove"
+                android:onClick="removeItemAll"
+                style="@style/gem_remove_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/amount_label"
+                android:text="@string/amount_cart"
+                style="@style/gem_description" />
+
+            <TextView
+                android:id="@+id/amount"
+                style="@style/gem_amount" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/description"
+        style="@style/gem_description" />
 
 </LinearLayout>

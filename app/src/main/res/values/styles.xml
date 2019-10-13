@@ -22,6 +22,40 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="gem_images">
+        <item name="android:layout_width">@dimen/image_width</item>
+        <item name="android:layout_height">@dimen/image_height</item>
+    </style>
+
+    <style name="gem_price">
+        <item name="android:layout_width">@dimen/price_label_width</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/price_size</item>
+    </style>
+
+    <style name="gem_amount">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/amount_size</item>
+    </style>
+
+    <style name="gem_add_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="gem_remove_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="gem_description">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 
 </resources>

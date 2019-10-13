@@ -14,23 +14,28 @@
     <string name="amethyst_price">$137.52</string>
     <string name="amethyst_description">This gemstone is a 9 carat luxury amethyst that comes from
         Africa</string>
+    <string name="amethyst_amount">0</string>
 
     <string name="ruby_title">Ruby</string>
     <string name="ruby_price">$515.70</string>
     <string name="ruby_description">This 9 carat ruby is a really beauty to gaze ones eyes upon.</string>
+    <string name="ruby_amount">0</string>
 
     <string name="yellowDiamond_title">Yellow Diamond</string>
     <string name="yellowDiamond_price">$10,000</string>
     <string name="yellowDiamond_description">This polished yellow diamond originates from Mumbai.</string>
+    <string name="yellowDiamond_amount">0</string>
 
     <string name="sapphire_title">Sapphire</string>
     <string name="sapphire_price">$429.75</string>
     <string name="sapphire_description">This is a 9 carat sapphire originates from Thailand</string>
+    <string name="sapphire_amount">0</string>
 
     <string name="phosphophyllite_title">Phosphophyllite</string>
     <string name="phosphophyllite_price">$800</string>
     <string name="phosphophyllite_description">This incredibly rare and fragile mineral comes
         from Bolivia. </string>
+    <string name="phosphophyllite_amount">0</string>
 
     <string name="description_main_gemstone">Picture of a gemstone</string>
     <string name="checkout_title">Checkout</string>
