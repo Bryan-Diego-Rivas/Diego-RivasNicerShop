@@ -45,6 +45,37 @@
         from Bolivia. </string>
     <string name="phosphophyllite_amount">0</string>
 
+    <string name="alexandrite_title">Alexandrite</string>
+    <string name="alexandrite_price">2500</string>
+    <string name="alexandrite_description">“Emerald by day, ruby by night,” alexandrite is well
+        known for displaying one of the most remarkable color changes in the gem world</string>
+    <string name="alexandrite_amount">0</string>
+
+    <string name="tourmaline_title">Tourmaline</string>
+    <string name="tourmaline_price">200</string>
+    <string name="tourmaline_description">Tourmaline can be found in more hues, shades and
+        nuances than any other gem.</string>
+    <string name="tourmaline_amount">0</string>
+
+    <string name="euclase_title">Euclase</string>
+    <string name="euclase_price">1800</string>
+    <string name="euclase_description">Although hard enough to be worn safely in jewelry, euclase
+        in beautiful colors is rare over a few carats. It’s also a difficult gem to facet.</string>
+    <string name="euclase_amount">0</string>
+
+    <string name="zircon_title">Zircon</string>
+    <string name="zircon_price">300</string>
+    <string name="zircon_description">Zircon is a natural gemstone that is a favorite of gem dealers
+        and collectors, but it is not well known in the retail jewelry market.</string>
+    <string name="zircon_amount">0</string>
+
+    <string name="rutile_title">Rutile</string>
+    <string name="rutile_price">400</string>
+    <string name="rutile_description">Though perhaps best known as inclusions within other gems,
+        rutile crystals themselves can be faceted or cabbed as curiosities for collectors.
+        Rutile can show a deep, red color.</string>
+    <string name="rutile_amount">0</string>
+
     <string name="description_main_gemstone">Picture of a gemstone</string>
     <string name="checkout_title">Checkout</string>
     <string name="subtotal_label">Subtotal:</string>

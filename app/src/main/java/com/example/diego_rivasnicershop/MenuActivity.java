@@ -109,6 +109,26 @@ public class MenuActivity extends AppCompatActivity {
                 Double.parseDouble(getResources().getString(R.string.phosphophyllite_price)),
                 R.drawable.phospho,
                 Integer.parseInt(getResources().getString(R.string.phosphophyllite_amount))));
+        gemList.addLast(new GemModel(R.string.alexandrite_title, R.string.alexandrite_description,
+                Double.parseDouble(getResources().getString(R.string.alexandrite_price)),
+                R.drawable.alexandrite,
+                Integer.parseInt(getResources().getString(R.string.alexandrite_amount))));
+        gemList.addLast(new GemModel(R.string.tourmaline_title, R.string.tourmaline_description,
+                Double.parseDouble(getResources().getString(R.string.tourmaline_price)),
+                R.drawable.tourmaline,
+                Integer.parseInt(getResources().getString(R.string.tourmaline_amount))));
+        gemList.addLast(new GemModel(R.string.euclase_title, R.string.euclase_description,
+                Double.parseDouble(getResources().getString(R.string.euclase_price)),
+                R.drawable.euclase,
+                Integer.parseInt(getResources().getString(R.string.euclase_amount))));
+        gemList.addLast(new GemModel(R.string.zircon_title, R.string.zircon_description,
+                Double.parseDouble(getResources().getString(R.string.zircon_price)),
+                R.drawable.zircon,
+                Integer.parseInt(getResources().getString(R.string.zircon_amount))));
+        gemList.addLast(new GemModel(R.string.rutile_title, R.string.rutile_description,
+                Double.parseDouble(getResources().getString(R.string.rutile_price)),
+                R.drawable.rutile,
+                Integer.parseInt(getResources().getString(R.string.rutile_amount))));
     }
 
     /**
