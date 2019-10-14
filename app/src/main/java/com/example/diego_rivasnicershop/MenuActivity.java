@@ -43,6 +43,8 @@ public class MenuActivity extends AppCompatActivity {
         adapter = new ProductAdapter(this, gemList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     /**

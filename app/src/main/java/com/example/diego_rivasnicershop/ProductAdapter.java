@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +26,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             public final TextView quantityView;
             public final TextView subtotalView;
             final ProductAdapter adapter;
-            private int id = R.id.gem;
             Button addButton;
             Button removeButton;
 
@@ -40,15 +40,28 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 this.adapter = adapter;
 
                 addButton = itemView.findViewById(R.id.add_button);
-                addButton.setOnClickListener(this);
-
                 removeButton = itemView.findViewById(R.id.remove_button);
+                addButton.setOnClickListener(this);
                 removeButton.setOnClickListener(this);
             }
 
-
+            /**
+             * Method that can add or remove a gem from the cart when said button is clicked
+             * @param v
+             */
             @Override
             public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.add_button: add();
+                        break;
+                    case R.id.remove_button: remove();
+                }
+            }
+
+            /**
+             * Method adds a gem to the cart. It updates the quantity and the subtotal of the gem
+             */
+            public void add() {
                 int position = getLayoutPosition();
                 Log.d("Position", position + "");
                 GemModel element = gemList.get(position);
@@ -56,53 +69,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 String subtotal = itemView.getResources().getString(R.string.gem_subtotal)+ " ";
                 double price = element.getPrice();
 
-               // if (addButton.callOnClick())
-                    switch (position) {
-                        case 1:
-                            quantity = element.getQuantity() + 1;
-                            element.setQuantity(quantity);
-                            subtotal += Double.toString(price * quantity);
-                            quantityView.setText(Integer.toString(quantity));
-                            subtotalView.setText(subtotal);
-                            break;
-                        case 2:
-                            quantity = element.getQuantity() + 1;
-                            element.setQuantity(quantity);
-                            subtotal += Double.toString(price * quantity);
-                            quantityView.setText(Integer.toString(quantity));
-                            subtotalView.setText(subtotal);
-                            break;
-                        case 3:
-                            quantity = element.getQuantity() + 1;
-                            element.setQuantity(quantity);
-                            subtotal += Double.toString(price * quantity);
-                            quantityView.setText(Integer.toString(quantity));
-                            subtotalView.setText(subtotal);
-                            break;
-                        case 4:
-                            quantity = element.getQuantity() + 1;
-                            element.setQuantity(quantity);
-                            subtotal += Double.toString(price * quantity);
-                            quantityView.setText(Integer.toString(quantity));
-                            subtotalView.setText(subtotal);
-                            break;
-                        case 5:
-                            quantity = element.getQuantity() + 1;
-                            element.setQuantity(quantity);
-                            subtotal += Double.toString(price * quantity);
-                            quantityView.setText(Integer.toString(quantity));
-                            subtotalView.setText(subtotal);
-                            break;
+                quantity = element.getQuantity() + 1;
+                element.setQuantity(quantity);
+                subtotal += String.format("%.2f", price * quantity);
+                quantityView.setText(Integer.toString(quantity));
+                subtotalView.setText(subtotal);
+            }
 
-                            default:
-                            quantity = element.getQuantity() + 1;
-                            gemList.get(position).setQuantity(quantity);
-                            subtotal += Double.toString(price * quantity);
-                            quantityView.setText(Integer.toString(quantity));
-                            subtotalView.setText(subtotal);
-                            break;
-                    }
+            /**
+             * Method Removes a gem from the cart. It updates the quantity in the shop and the
+             * subtotal of the gem
+             */
+            public void remove() {
+                int position = getLayoutPosition();
+                Log.d("Position", position + "");
+                GemModel element = gemList.get(position);
+                int quantity;
+                String subtotal = itemView.getResources().getString(R.string.gem_subtotal) + " ";
+                double price = element.getPrice();
 
+                quantity = element.getQuantity() - 1;
+                element.setQuantity(quantity);
+                subtotal += String.format("%.2f", price * quantity);
+                quantityView.setText(Integer.toString(quantity));
+                subtotalView.setText(subtotal);
             }
 
         }
