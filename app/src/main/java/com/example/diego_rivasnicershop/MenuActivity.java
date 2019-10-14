@@ -1,23 +1,29 @@
 package com.example.diego_rivasnicershop;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.example.diego_rivasnicershop.model.GemModel;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private final LinkedList<GemModel> gemList = new LinkedList<>();
+    private LinkedList<GemModel> gemList = new LinkedList<>();
     private RecyclerView recyclerView;
     private ProductAdapter adapter;
+    private int shippingCost = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +36,10 @@ public class MenuActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchCheckoutActivity(view);
+                ShippingAlert(view);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
         setGemModel();
 
@@ -44,7 +48,25 @@ public class MenuActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //Restoring values
+        if (savedInstanceState != null) {
+            //Retrieving values
+            Log.d("Inside", "Inside toRestore");
+            gemList = (LinkedList<GemModel>) savedInstanceState.getSerializable("Gem_Data");
+            Parcelable state = savedInstanceState.getParcelable("listState");
+            recyclerView.getLayoutManager().onRestoreInstanceState(state);
+            recyclerView.setAdapter(new ProductAdapter(this, gemList));
+        }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable("Gem_Data", gemList);
+        Parcelable listState = recyclerView.getLayoutManager().onSaveInstanceState();
+        outState.putParcelable("listState", listState);
     }
 
     /**
@@ -53,6 +75,12 @@ public class MenuActivity extends AppCompatActivity {
      */
     public void launchCheckoutActivity(View view) {
         Intent intent = new Intent(this, CheckoutActivity.class);
+        double subtotal = 0;
+
+        for (GemModel gem: gemList) {
+            subtotal += gem.getTotal();
+        }
+        intent.putExtra("Gem_Subtotal", subtotal);
         startActivity(intent);
     }
 
@@ -82,4 +110,41 @@ public class MenuActivity extends AppCompatActivity {
                 Integer.parseInt(getResources().getString(R.string.phosphophyllite_amount))));
     }
 
+
+    /**
+     *
+     * @param view
+     */
+    public void ShippingAlert(final View view) {
+        String[] listItems = getResources().getStringArray(R.array.shipping_item);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Delivery methods");
+        alert.setMessage("Choose a Shipping method");
+        alert.setSingleChoiceItems(listItems, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int postion) {
+                switch (postion){
+                    case 1: shippingCost = 50;
+                        break;
+                    case 2: shippingCost = 20;
+                        break;
+                    case 3: shippingCost = 0;
+                }
+            }
+        });
+        alert.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                launchCheckoutActivity(view);
+            }
+        });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        AlertDialog dialog = alert.create();
+        dialog.show();
+    }
 }

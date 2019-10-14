@@ -9,6 +9,8 @@ public class GemModel {
     private double price;
     private int image;
     private int quantity;
+    private double total;
+
 
     public GemModel(int title, int description, double price, int image, int quantity) {
         this.title = title;
@@ -16,6 +18,7 @@ public class GemModel {
         this.price = price;
         this.image = image;
         this.quantity = quantity;
+        total = 0;
     }
 
     //Getters and Setters
@@ -39,6 +42,8 @@ public class GemModel {
         return quantity;
     }
 
+    public double getTotal() { return total; }
+
     public void setTitle(int title) {
         this.title = title;
     }
@@ -58,4 +63,6 @@ public class GemModel {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public void setTotal(double total) { this.total = total; }
 }

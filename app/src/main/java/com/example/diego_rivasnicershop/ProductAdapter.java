@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.diego_rivasnicershop.model.GemModel;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -63,7 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
              */
             public void add() {
                 int position = getLayoutPosition();
-                Log.d("Position", position + "");
+
                 GemModel element = gemList.get(position);
                 int quantity;
                 String subtotal = itemView.getResources().getString(R.string.gem_subtotal)+ " ";
@@ -71,9 +72,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 quantity = element.getQuantity() + 1;
                 element.setQuantity(quantity);
-                subtotal += String.format("%.2f", price * quantity);
+                double total = price * quantity;
+                subtotal += String.format("%.2f", total);
                 quantityView.setText(Integer.toString(quantity));
                 subtotalView.setText(subtotal);
+                element.setTotal(total);
+                Log.d("Item_Added", "Gem: " +
+                        itemView.getResources().getString(element.getTitle()) + " was added. " +
+                        "Price for the item is " + element.getPrice());
             }
 
             /**
@@ -82,7 +88,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
              */
             public void remove() {
                 int position = getLayoutPosition();
-                Log.d("Position", position + "");
+
                 GemModel element = gemList.get(position);
                 int quantity;
                 String subtotal = itemView.getResources().getString(R.string.gem_subtotal) + " ";
@@ -90,9 +96,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 quantity = element.getQuantity() - 1;
                 element.setQuantity(quantity);
-                subtotal += String.format("%.2f", price * quantity);
+                double total = price * quantity;
+                subtotal += String.format("%.2f",total);
                 quantityView.setText(Integer.toString(quantity));
                 subtotalView.setText(subtotal);
+                element.setTotal(total);
+                Log.d("Item_Remove", "Gem :" +
+                        itemView.getResources().getString(element.getTitle()) + " was removed. " +
+                        "Price for the item is " + element.getPrice());
             }
 
         }

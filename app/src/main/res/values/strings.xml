@@ -12,6 +12,12 @@
     <string name="dollar_sign">$</string>
     <string name="gem_subtotal">Gem subtotal is $</string>
 
+    <string-array name="shipping_item">
+        <item>Express ($50)</item>
+        <item>Regular ($20)</item>
+        <item>No hurry (No cost)</item>
+    </string-array>
+    
     <string name="amethyst_title">Amethyst</string>
     <string name="amethyst_price">137.52</string>
     <string name="amethyst_description">This gemstone is a 9 carat luxury amethyst that comes from
