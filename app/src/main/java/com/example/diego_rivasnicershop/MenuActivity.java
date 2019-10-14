@@ -12,10 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-
 import com.example.diego_rivasnicershop.model.GemModel;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MenuActivity extends AppCompatActivity {
@@ -57,9 +54,12 @@ public class MenuActivity extends AppCompatActivity {
             recyclerView.getLayoutManager().onRestoreInstanceState(state);
             recyclerView.setAdapter(new ProductAdapter(this, gemList));
         }
-
     }
 
+    /**
+     * Method that saves the values when screen goes to landscape
+     * @param outState the save state
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -71,7 +71,7 @@ public class MenuActivity extends AppCompatActivity {
 
     /**
      * Method launches the CheckoutActivity
-     * @param view
+     * @param view Current view
      */
     public void launchCheckoutActivity(View view) {
         Intent intent = new Intent(this, CheckoutActivity.class);
@@ -80,6 +80,7 @@ public class MenuActivity extends AppCompatActivity {
         for (GemModel gem: gemList) {
             subtotal += gem.getTotal();
         }
+        subtotal += shippingCost;
         intent.putExtra("Gem_Subtotal", subtotal);
         startActivity(intent);
     }
@@ -110,28 +111,14 @@ public class MenuActivity extends AppCompatActivity {
                 Integer.parseInt(getResources().getString(R.string.phosphophyllite_amount))));
     }
 
-
     /**
-     *
-     * @param view
+     * Method that creates the AlertDialog with 3 different shipping methods
+     * @param view Current view
      */
     public void ShippingAlert(final View view) {
         String[] listItems = getResources().getStringArray(R.array.shipping_item);
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(MenuActivity.this);
         alert.setTitle("Delivery methods");
-        alert.setMessage("Choose a Shipping method");
-        alert.setSingleChoiceItems(listItems, 0, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int postion) {
-                switch (postion){
-                    case 1: shippingCost = 50;
-                        break;
-                    case 2: shippingCost = 20;
-                        break;
-                    case 3: shippingCost = 0;
-                }
-            }
-        });
         alert.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -142,6 +129,20 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+
+        alert.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int position) {
+                switch (position){
+                    case 1: shippingCost += 20;
+                        break;
+                    case 2: shippingCost += 0;
+                        break;
+                    default: shippingCost += 50;
+                        break;
+                }
             }
         });
         AlertDialog dialog = alert.create();

@@ -7,14 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.diego_rivasnicershop.model.GemModel;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -48,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
             /**
              * Method that can add or remove a gem from the cart when said button is clicked
-             * @param v
+             * @param v Current view
              */
             @Override
             public void onClick(View v) {
@@ -90,20 +87,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 int position = getLayoutPosition();
 
                 GemModel element = gemList.get(position);
-                int quantity;
+                int quantity = element.getQuantity();
                 String subtotal = itemView.getResources().getString(R.string.gem_subtotal) + " ";
                 double price = element.getPrice();
 
-                quantity = element.getQuantity() - 1;
-                element.setQuantity(quantity);
-                double total = price * quantity;
-                subtotal += String.format("%.2f",total);
-                quantityView.setText(Integer.toString(quantity));
-                subtotalView.setText(subtotal);
-                element.setTotal(total);
-                Log.d("Item_Remove", "Gem :" +
-                        itemView.getResources().getString(element.getTitle()) + " was removed. " +
-                        "Price for the item is " + element.getPrice());
+                if (quantity > 0 ){
+                    quantity--;
+                    element.setQuantity(quantity);
+                    double total = price * quantity;
+                    subtotal += String.format("%.2f",total);
+                    quantityView.setText(Integer.toString(quantity));
+                    subtotalView.setText(subtotal);
+                    element.setTotal(total);
+                    Log.d("Item_Remove", "Gem :" +
+                            itemView.getResources().getString(element.getTitle()) + " was removed. " +
+                            "Price for the item is " + element.getPrice());
+                }
             }
 
         }
@@ -131,6 +130,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.imageView.setImageResource(current.getImage());
         holder.descriptionView.setText(current.getDescription());
         holder.quantityView.setText(Integer.toString(current.getQuantity()));
+        holder.subtotalView.setText("Gem subtotal is $ 0.00");
 }
 
     @Override

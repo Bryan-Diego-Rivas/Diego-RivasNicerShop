@@ -3,11 +3,8 @@ package com.example.diego_rivasnicershop;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import com.example.diego_rivasnicershop.model.GemModel;
-
 import java.text.DecimalFormat;
-import java.util.LinkedList;
+
 
 public class CheckoutActivity extends AppCompatActivity {
 
@@ -51,6 +48,9 @@ public class CheckoutActivity extends AppCompatActivity {
         totalView.setText(totalStr);
     }
 
+    /**
+     * Method that calculates the TPS, TVQ and the GrandTotal of the purchase
+     */
     public void calculatePrice() {
         tps = subtotal * TPS_PERCENTAGE;
         tvq = subtotal * TVQ_PERCENTAGE;

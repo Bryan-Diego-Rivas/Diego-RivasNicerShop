@@ -1,7 +1,5 @@
 package com.example.diego_rivasnicershop.model;
 
-import android.widget.ImageView;
-
 public class GemModel {
 
     private int title;
@@ -60,9 +58,7 @@ public class GemModel {
         this.image = image;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
     public void setTotal(double total) { this.total = total; }
 }
