@@ -57,5 +57,12 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="gem_subtotal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/gem_subtotal</item>
+        <item name="android:textSize">@dimen/gem_subtotal</item>
+    </style>
+
 
 </resources>

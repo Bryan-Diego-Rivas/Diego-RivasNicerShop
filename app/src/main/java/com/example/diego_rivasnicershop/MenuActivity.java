@@ -45,23 +45,39 @@ public class MenuActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Method launches the CheckoutActivity
+     * @param view
+     */
     public void launchCheckoutActivity(View view) {
         Intent intent = new Intent(this, CheckoutActivity.class);
         startActivity(intent);
     }
 
-
+    /**
+     * Method Initializes the GemModels
+     */
     public void setGemModel() {
         gemList.addLast(new GemModel(R.string.amethyst_title, R.string.amethyst_description,
-                R.string.amethyst_price, R.drawable.amethyst, R.string.amethyst_amount));
+                Double.parseDouble(getResources().getString(R.string.amethyst_price)),
+                R.drawable.amethyst,
+                Integer.parseInt(getResources().getString(R.string.amethyst_amount))));
         gemList.addLast(new GemModel(R.string.ruby_title, R.string.ruby_description,
-                R.string.ruby_price, R.drawable.ruby_stone, R.string.ruby_amount));
+                Double.parseDouble(getResources().getString(R.string.ruby_price)),
+                R.drawable.ruby_stone,
+                Integer.parseInt(getResources().getString(R.string.ruby_amount))));
         gemList.addLast(new GemModel(R.string.yellowDiamond_title, R.string.yellowDiamond_description,
-                R.string.yellowDiamond_price, R.drawable.yellow_diamond, R.string.yellowDiamond_amount));
+                Double.parseDouble(getResources().getString(R.string.yellowDiamond_price)),
+                R.drawable.yellow_diamond,
+                Integer.parseInt(getResources().getString(R.string.yellowDiamond_amount))));
         gemList.addLast(new GemModel(R.string.sapphire_title, R.string.sapphire_description,
-                R.string.sapphire_price, R.drawable.blue_sapphire, R.string.sapphire_amount));
+                Double.parseDouble(getResources().getString(R.string.sapphire_price)),
+                R.drawable.blue_sapphire,
+                Integer.parseInt(getResources().getString(R.string.sapphire_amount))));
         gemList.addLast(new GemModel(R.string.phosphophyllite_title, R.string.phosphophyllite_description,
-                R.string.phosphophyllite_price, R.drawable.phospho, R.string.phosphophyllite_amount));
-
+                Double.parseDouble(getResources().getString(R.string.phosphophyllite_price)),
+                R.drawable.phospho,
+                Integer.parseInt(getResources().getString(R.string.phosphophyllite_amount))));
     }
+
 }

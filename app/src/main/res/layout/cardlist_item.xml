@@ -16,6 +16,13 @@
             style="@style/gem_images" />
 
         <TextView
+            android:id="@+id/dollar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dollar_sign"
+            android:textSize="@dimen/price_size"/>
+
+        <TextView
             android:id="@+id/price"
             style="@style/gem_price" />
 
@@ -27,13 +34,11 @@
             <Button
                 android:id="@+id/add_button"
                 android:text="add"
-                android:onClick="addItemAll"
                 style="@style/gem_add_button" />
 
             <Button
                 android:id="@+id/remove_button"
                 android:text="remove"
-                android:onClick="removeItemAll"
                 style="@style/gem_remove_button" />
         </LinearLayout>
 
@@ -57,5 +62,9 @@
     <TextView
         android:id="@+id/description"
         style="@style/gem_description" />
+
+    <TextView
+        android:id="@+id/subtotal"
+        style="@style/gem_subtotal" />
 
 </LinearLayout>
